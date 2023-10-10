@@ -7,6 +7,7 @@ import { HiHome } from "react-icons/hi";
 import { RiNotification2Line} from "react-icons/ri";
 import { BiSearch } from "react-icons/bi";
 import { FiDownload } from "react-icons/fi";
+import { GoLinkExternal } from "react-icons/Go";
 import Button from "@/components/common/Button/Button";
 import ButtonIcon from "@/components/common/ButtonIcon";
 import Tooltip from "@/components/common/Tooltip/Tooltip";
@@ -60,7 +61,7 @@ const Header: React.FC<HeaderProps> = ({
               className="bg-black hover:opacity-75"
             >
               <RxCaretLeft 
-                size={36}
+                size={32}
                 className="text-white "
               />
             </ButtonIcon>
@@ -73,7 +74,7 @@ const Header: React.FC<HeaderProps> = ({
               className="bg-black"
             >
               <RxCaretRight 
-                size={36}
+                size={32}
                 className="text-white hover:opacity-75"
               />
             </ButtonIcon>
@@ -150,13 +151,32 @@ const Header: React.FC<HeaderProps> = ({
             </ButtonIcon>
           </Tooltip>
           <Dropdown
-            className="
-              bg-[#282828] 
-              text-white
-              mt-1
-              rounded
-            "
+            classNames={{
+              base: "bg-[#282828] text-white mt-1 transition-none rounded-md",
+            }}
             placement="bottom-end"
+            motionProps={{
+              variants: {
+                enter: {
+                  y: 0,
+                  opacity: 1,
+                  transition: {
+                    opacity: {
+                      duration: 0,
+                    },
+                  },
+                },
+                exit: {
+                  y: 0,
+                  opacity: 0,
+                  transition: {
+                    opacity: {
+                      duration: 0,
+                    },
+                  },
+                },
+              },
+            }}
           >
             <DropdownTrigger>
               <ButtonIcon
@@ -188,14 +208,26 @@ const Header: React.FC<HeaderProps> = ({
                 </div> 
               </ButtonIcon>
             </DropdownTrigger>
-            <DropdownMenu className="p-1"variant="faded" aria-label="Static Actions">
-              <DropdownSection showDivider>
-                <DropdownItem >Account</DropdownItem>
-                <DropdownItem>Profile</DropdownItem>
-                <DropdownItem>Settings</DropdownItem>
+            <DropdownMenu>
+              <DropdownSection 
+                classNames={{
+                  base: "mt-1",
+                  divider: 'bg-white/20'
+                }}
+                showDivider
+              >
+                <DropdownItem 
+                  className="cursor-progress rounded-sm h-10"
+                  endContent={<GoLinkExternal className="text-large" />}
+                  
+                >
+                  Account
+                </DropdownItem>
+                <DropdownItem className="cursor-progress rounded-sm h-10">Profile</DropdownItem>
+                <DropdownItem className="cursor-progress rounded-sm h-10">Settings</DropdownItem>
               </DropdownSection>
-              <DropdownSection>
-                <DropdownItem className="text-white hover:bg-black" >Log out</DropdownItem>
+              <DropdownSection className={"mb-0"}>
+                <DropdownItem className="cursor-progress rounded-sm h-10">Log out</DropdownItem>
               </DropdownSection>
             </DropdownMenu>
           </Dropdown>

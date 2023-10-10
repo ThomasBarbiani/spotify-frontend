@@ -2,17 +2,35 @@
 
 import { TbPlaylist } from 'react-icons/tb'
 import { HiOutlinePlus } from 'react-icons/hi'
+import { AiOutlineClose } from 'react-icons/ai'
 import Button from '@/components/common/Button/Button';
 import Tooltip from '@/components/common/Tooltip/Tooltip';
 import ButtonIcon from '@/components/common/ButtonIcon';
 import MediaItem from './MediaItem';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
+
+type ButtonName = 'playlists' | 'albums';
 
 const Library = () => {
 
   const onClick = () => {
     // depois
   }
+
+  const [selectedItem, setSelectedItem] = useState<string | null>(null);
+  const [activeButton, setActiveButton] = useState<ButtonName | null>(null);
+
+  const handleButtonClick = (buttonName: ButtonName) => {
+    if (activeButton === buttonName) {
+      setTimeout(function () {
+        setActiveButton(null);
+      }, 400);
+    } else {
+      setTimeout(function () {
+        setActiveButton(buttonName);
+      }, 400);
+    }
+  };
 
   const mediaData = useMemo(() => [
     {
@@ -85,7 +103,6 @@ const Library = () => {
 
   return (
     <div className="flex flex-col">
-      {/* content */}
       <div className='flex flex-col pb-2'>
         <div
           className="
@@ -150,33 +167,54 @@ const Library = () => {
             gap-x-2   
           "
         >
+          {activeButton && (
+            <ButtonIcon
+              onClick={() => {
+                setTimeout(function () {
+                  setActiveButton(null);
+                }, 400);
+              }}
+              className="
+                bg-[#232323] 
+                hover:bg-[#2A2A2A] 
+                px-1.5 
+                py-1.5 
+                transition 
+                text-neutral-400
+              "
+            >
+              <AiOutlineClose 
+                size={22}
+              />
+            </ButtonIcon>
+          )}
+
           <Button
-            onClick={() => {}}
-            className="
-              bg-[#232323]
-              px-3
-              py-1.5
-              hover:bg-[#2A2A2A]
-              transition
+            onClick={() => handleButtonClick('playlists')}
+            className={`
+              ${activeButton === 'playlists' ? 'bg-white text-black' : 'bg-[#232323] text-white'}
+              px-3 
+              py-1.5 
+              ${activeButton === 'albums' ? 'hidden' : ''} 
+              ${activeButton === 'playlists' ? 'bg-white' : 'hover:bg-[#2A2A2A]'} 
+              transition 
               font-semibold
-              focus:bg-white
-              focus:text-black
-            "
+            `}
           >
             Playlists
           </Button>
+
           <Button
-            onClick={() => {}}
-            className="
-              bg-[#232323]
-              px-3
-              py-1.5
-              hover:bg-[#2A2A2A]
-              transition
+            onClick={() => handleButtonClick('albums')}
+            className={`
+              ${activeButton === 'albums' ? 'bg-white text-black' : 'bg-[#232323] text-white'}
+              px-3 
+              py-1.5 
+              ${activeButton === 'playlists' ? 'hidden' : ''} 
+              ${activeButton === 'albums' ? 'bg-white' : 'hover:bg-[#2A2A2A]'} 
+              transition 
               font-semibold
-              focus:bg-white
-              focus:text-black
-            "
+            `}
           >
             Albums
           </Button>
@@ -191,9 +229,11 @@ const Library = () => {
         text-white
       ">
         {mediaData.map((item) => (
-          <MediaItem 
+          <MediaItem
             key={item.name}
             {...item}
+            isSelected={item.name === selectedItem}
+            onClick={() => setSelectedItem(item.name)}
           />
         ))}
       </div>

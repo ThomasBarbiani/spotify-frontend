@@ -17,6 +17,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
         flex
         flex-row
         w-auto
+        h-[32px]
         rounded-full
         border
         border-transparent

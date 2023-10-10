@@ -43,8 +43,12 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
           gap-y-2
           bg-black
           h-full
-          w-[300px]
+          w-[377px]
+          min-w-[300px]
+          max-w-[600px]
           p-2
+          resize-x	
+          overflow-auto
         '
       >
         <Box>
