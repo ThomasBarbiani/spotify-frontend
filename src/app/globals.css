@@ -10,3 +10,9 @@ body,
   background-color: black;
   color-scheme: dark;
 }
+
+@layer utilities {
+  .scrollbar-medium::-webkit-scrollbar {
+    width: 12px;
+  }
+}

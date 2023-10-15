@@ -69,7 +69,17 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
             ))}
           </div>
         </Box>
-        <Box className='h-full overflow-y-auto'>
+        <Box 
+          className='
+            h-full 
+            overflow-hidden
+            hover:overflow-y-auto 
+            scrollbar
+          scrollbar-thumb-white/30
+          hover:scrollbar-thumb-white/50 
+            scrollbar-track-white/0
+            scrollbar-medium
+        '>
          <Library />
         </Box>
       </div>

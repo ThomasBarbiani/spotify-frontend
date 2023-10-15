@@ -9,7 +9,7 @@ import ButtonIcon from '@/components/common/ButtonIcon';
 import MediaItem from './MediaItem';
 import { useMemo, useState } from 'react';
 
-type ButtonName = 'playlists' | 'albums';
+type ButtonName = 'Playlist' | 'Album';
 
 const Library = () => {
 
@@ -19,18 +19,6 @@ const Library = () => {
 
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   const [activeButton, setActiveButton] = useState<ButtonName | null>(null);
-
-  const handleButtonClick = (buttonName: ButtonName) => {
-    if (activeButton === buttonName) {
-      setTimeout(function () {
-        setActiveButton(null);
-      }, 400);
-    } else {
-      setTimeout(function () {
-        setActiveButton(buttonName);
-      }, 400);
-    }
-  };
 
   const mediaData = useMemo(() => [
     {
@@ -73,37 +61,61 @@ const Library = () => {
       image: 'https://i.scdn.co/image/ab67616d0000b273cdb645498cd3d8a2db4d05e1',
       name: 'To Pimp A Butterfly',
       artist: 'Kendrick Lamar',
-      type: 'Album',
+      type: 'Playlist',
     },
     {
       image: 'https://i.scdn.co/image/ab67616d0000b273a48964b5d9a3d6968ae3e0de',
       name: 'Fearless',
       artist: 'Taylor Swift',
-      type: 'Album',
+      type: 'Playlist',
     },
     {
       image: 'https://i.scdn.co/image/ab67616d0000b273d4daf28d55fe4197ede848be',
       name: 'Future Nostalgia',
       artist: 'Dua Lipa',
-      type: 'Album',
+      type: 'Playlist',
     },
     {
       image: 'https://i.scdn.co/image/ab67616d0000b273d9194aa18fa4c9362b47464f',
       name: 'My Beautiful Dark Twisted Fantasy',
       artist: 'Kanye West',
-      type: 'Album',
+      type: 'Playlist',
     },
     {
       image: 'https://i.scdn.co/image/ab67616d0000b273f8553e18a11209d4becd0336',
       name: 'Melodrama',
       artist: 'Lorde',
-      type: 'Album',
+      type: 'Playlist',
     },
   ], [])
+  
+  const [filteredMediaData, setFilteredMediaData] = useState(mediaData);
+
+  const handleButtonClick = (buttonName: ButtonName) => {
+    if (activeButton === buttonName) {
+      setActiveButton(null);
+      setFilteredMediaData(mediaData);
+    } else {
+      const filteredData = mediaData.filter((media) => media.type === buttonName);
+      setFilteredMediaData(filteredData);
+      setActiveButton(buttonName);
+    }
+  };
 
   return (
     <div className="flex flex-col">
-      <div className='flex flex-col pb-2'>
+      <div 
+        className='
+          flex 
+          flex-col 
+          pb-2 
+          sticky 
+          top-0 
+          z-50 
+          bg-[#121212] 
+          shadow-[0_5px_10px_-1px_rgba(0,0,0,0.9)]
+        '
+      >
         <div
           className="
             flex
@@ -164,15 +176,15 @@ const Library = () => {
             mt-1
             px-4
             pt-4
+            mb-0.5
             gap-x-2   
           "
         >
           {activeButton && (
             <ButtonIcon
-              onClick={() => {
-                setTimeout(function () {
-                  setActiveButton(null);
-                }, 400);
+              onClick={() => { 
+                setActiveButton(null); 
+                setFilteredMediaData(mediaData);
               }}
               className="
                 bg-[#232323] 
@@ -190,13 +202,13 @@ const Library = () => {
           )}
 
           <Button
-            onClick={() => handleButtonClick('playlists')}
+            onClick={() => handleButtonClick('Playlist')}
             className={`
-              ${activeButton === 'playlists' ? 'bg-white text-black' : 'bg-[#232323] text-white'}
+              ${activeButton === 'Playlist' ? 'bg-white text-black' : 'bg-[#232323] text-white'}
               px-3 
               py-1.5 
-              ${activeButton === 'albums' ? 'hidden' : ''} 
-              ${activeButton === 'playlists' ? 'bg-white' : 'hover:bg-[#2A2A2A]'} 
+              ${activeButton === 'Album' ? 'hidden' : ''} 
+              ${activeButton === 'Playlist' ? 'bg-white' : 'hover:bg-[#2A2A2A]'} 
               transition 
               font-semibold
             `}
@@ -205,13 +217,13 @@ const Library = () => {
           </Button>
 
           <Button
-            onClick={() => handleButtonClick('albums')}
+            onClick={() => handleButtonClick('Album')}
             className={`
-              ${activeButton === 'albums' ? 'bg-white text-black' : 'bg-[#232323] text-white'}
+              ${activeButton === 'Album' ? 'bg-white text-black' : 'bg-[#232323] text-white'}
               px-3 
               py-1.5 
-              ${activeButton === 'playlists' ? 'hidden' : ''} 
-              ${activeButton === 'albums' ? 'bg-white' : 'hover:bg-[#2A2A2A]'} 
+              ${activeButton === 'Playlist' ? 'hidden' : ''} 
+              ${activeButton === 'Album' ? 'bg-white' : 'hover:bg-[#2A2A2A]'} 
               transition 
               font-semibold
             `}
@@ -228,7 +240,7 @@ const Library = () => {
         px-2
         text-white
       ">
-        {mediaData.map((item) => (
+        {filteredMediaData.map((item) => (
           <MediaItem
             key={item.name}
             {...item}
