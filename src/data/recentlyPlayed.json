@@ -1,0 +1,50 @@
+[
+  {
+    "image": "https://i.scdn.co/image/ab67616d0000b273de3c04b5fc750b68899b20a9",
+    "name": "In Rainbows",
+    "artist": "Radiohead",
+    "type": "Album"
+  },
+  {
+    "image": "https://i.scdn.co/image/ab67616d0000b27374dc897ea75402db37ef239a",
+    "name": "Madvillainy",
+    "artist": "Madvillain",
+    "type": "Album"
+  },
+  {
+    "image": "https://i.scdn.co/image/ab67616d0000b273013c00ee367dd85396f79c82",
+    "name": "KIDS SEE GHOSTS",
+    "artist": "KIDS SEE GHOSTS",
+    "type": "Album"
+  },
+  {
+    "image": "https://i.scdn.co/image/ab67616d0000b2731a84d71391df7469c5ab8539",
+    "name": "Wish You Were Here",
+    "artist": "Pink Floyd",
+    "type": "Album"
+  },
+  {
+    "image": "https://i.scdn.co/image/ab67616d0000b2731dacfbc31cc873d132958af9",
+    "name": "Yeezus",
+    "artist": "Kanye West",
+    "type": "Album"
+  },
+  {
+    "image": "https://i.scdn.co/image/ab67616d0000b273881d8d8378cd01099babcd44",
+    "name": "UTOPIA",
+    "artist": "Travis Scott",
+    "type": "Album"
+  },
+  {
+    "image": "https://i.scdn.co/image/ab67616d0000b273d9194aa18fa4c9362b47464f",
+    "name": "My Beautiful Dark Twisted Fantasy",
+    "artist": "Kanye West",
+    "type": "Album"
+  },
+  {
+    "image": "https://i.scdn.co/image/ab67616d0000b273f8553e18a11209d4becd0336",
+    "name": "Melodrama",
+    "artist": "Lorde",
+    "type": "Album"
+  }
+]

@@ -8,6 +8,8 @@ import Tooltip from '@/components/common/Tooltip/Tooltip';
 import ButtonIcon from '@/components/common/ButtonIcon';
 import MediaItem from './MediaItem';
 import { useMemo, useState } from 'react';
+import albumsData from '@/data/albumsData.json'
+import playlistsData from '@/data/playlistsData.json'
 
 type ButtonName = 'Playlist' | 'Album';
 
@@ -17,78 +19,10 @@ const Library = () => {
     // depois
   }
 
-  const [selectedItem, setSelectedItem] = useState<string | null>(null);
-  const [activeButton, setActiveButton] = useState<ButtonName | null>(null);
+  const mediaData = useMemo(() => [...albumsData, ...playlistsData], [])
 
-  const mediaData = useMemo(() => [
-    {
-      image: 'https://i.scdn.co/image/ab67616d0000b273de3c04b5fc750b68899b20a9',
-      name: 'In Rainbows',
-      artist: 'Radiohead',
-      type: 'Album',
-    },
-    {
-      image: 'https://i.scdn.co/image/ab67616d0000b27374dc897ea75402db37ef239a',
-      name: 'Madvillainy',
-      artist: 'Madvillain',
-      type: 'Album',
-    },
-    {
-      image: 'https://i.scdn.co/image/ab67616d0000b273013c00ee367dd85396f79c82',
-      name: 'KIDS SEE GHOSTS',
-      artist: 'KIDS SEE GHOSTS',
-      type: 'Album',
-    },
-    {
-      image: 'https://i.scdn.co/image/ab67616d0000b2731a84d71391df7469c5ab8539',
-      name: 'Wish You Were Here',
-      artist: 'Pink Floyd',
-      type: 'Album',
-    },
-    {
-      image: 'https://i.scdn.co/image/ab67616d0000b2731dacfbc31cc873d132958af9',
-      name: 'Yeezus',
-      artist: 'Kanye West',
-      type: 'Album',
-    },
-    {
-      image: 'https://i.scdn.co/image/ab67616d0000b273881d8d8378cd01099babcd44',
-      name: 'UTOPIA',
-      artist: 'Travis Scott',
-      type: 'Album',
-    },
-    {
-      image: 'https://i.scdn.co/image/ab67616d0000b273cdb645498cd3d8a2db4d05e1',
-      name: 'To Pimp A Butterfly',
-      artist: 'Kendrick Lamar',
-      type: 'Playlist',
-    },
-    {
-      image: 'https://i.scdn.co/image/ab67616d0000b273a48964b5d9a3d6968ae3e0de',
-      name: 'Fearless',
-      artist: 'Taylor Swift',
-      type: 'Playlist',
-    },
-    {
-      image: 'https://i.scdn.co/image/ab67616d0000b273d4daf28d55fe4197ede848be',
-      name: 'Future Nostalgia',
-      artist: 'Dua Lipa',
-      type: 'Playlist',
-    },
-    {
-      image: 'https://i.scdn.co/image/ab67616d0000b273d9194aa18fa4c9362b47464f',
-      name: 'My Beautiful Dark Twisted Fantasy',
-      artist: 'Kanye West',
-      type: 'Playlist',
-    },
-    {
-      image: 'https://i.scdn.co/image/ab67616d0000b273f8553e18a11209d4becd0336',
-      name: 'Melodrama',
-      artist: 'Lorde',
-      type: 'Playlist',
-    },
-  ], [])
-  
+  const [selectedItem, setSelectedItem] = useState<string | null>(null);
+  const [activeButton, setActiveButton] = useState<ButtonName | null>(null);  
   const [filteredMediaData, setFilteredMediaData] = useState(mediaData);
 
   const handleButtonClick = (buttonName: ButtonName) => {

@@ -1,0 +1,32 @@
+[
+  {
+    "image": "https://i.scdn.co/image/ab67616d0000b273cdb645498cd3d8a2db4d05e1",
+    "name": "To Pimp A Butterfly",
+    "artist": "Kendrick Lamar",
+    "type": "Playlist"
+  },
+  {
+    "image": "https://i.scdn.co/image/ab67616d0000b273a48964b5d9a3d6968ae3e0de",
+    "name": "Fearless",
+    "artist": "Taylor Swift",
+    "type": "Playlist"
+  },
+  {
+    "image": "https://i.scdn.co/image/ab67616d0000b273d4daf28d55fe4197ede848be",
+    "name": "Future Nostalgia",
+    "artist": "Dua Lipa",
+    "type": "Playlist"
+  },
+  {
+    "image": "https://i.scdn.co/image/ab67616d0000b273d9194aa18fa4c9362b47464f",
+    "name": "My Beautiful Dark Twisted Fantasy",
+    "artist": "Kanye West",
+    "type": "Playlist"
+  },
+  {
+    "image": "https://i.scdn.co/image/ab67616d0000b273f8553e18a11209d4becd0336",
+    "name": "Melodrama",
+    "artist": "Lorde",
+    "type": "Playlist"
+  }
+]

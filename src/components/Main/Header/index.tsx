@@ -34,8 +34,14 @@ const Header: React.FC<HeaderProps> = ({
     <div 
       className={twMerge(`
         h-fit
-        px-6
-        py-4
+        pl-6
+        pr-3
+        pt-4
+        pb-1
+        sticky 
+        top-0 
+        z-50 
+        bg-[#121212]
       `,
         className
       )}
