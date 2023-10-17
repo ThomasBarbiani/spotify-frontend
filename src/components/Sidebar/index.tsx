@@ -9,11 +9,8 @@ import Box from './Box';
 import SidebarItem from './SidebarItem';
 import Library from './Library';
 
-interface SidebarProps {
-  children: React.ReactNode;
-}
 
-const Sidebar: React.FC<SidebarProps> = ({ children }) => {
+const Sidebar = () => {
 
   const pathname = usePathname();
 
@@ -34,58 +31,53 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
   ], [pathname])
 
   return (
-    <div className='flex h-full'>
-      <div
-        className='
-          hidden
-          md:flex
-          flex-col
-          gap-y-2
-          bg-black
-          h-full
-          w-[377px]
-          min-w-[300px]
-          max-w-[600px]
-          p-2
-          resize-x	
-          overflow-auto
-        '
-      >
-        <Box>
-          <div
-            className='
-              flex
-              flex-col
-              gap-y-4
-              px-6
-              py-4
-            '
-          >
-            {routes.map((item) => (
-              <SidebarItem 
-                key={item.label}
-                {...item}
-              />
-            ))}
-          </div>
-        </Box>
-        <Box 
+    <div
+      className='
+        hidden
+        md:flex
+        flex-col
+        gap-y-2
+        bg-black
+        h-full
+        w-[377px]
+        min-w-[296px]
+        max-w-[600px]
+        p-2
+        resize-x	
+        overflow-auto
+      '
+    >
+      <Box>
+        <div
           className='
-            h-full 
-            overflow-hidden
-            hover:overflow-y-auto 
-            scrollbar
-          scrollbar-thumb-white/30
-          hover:scrollbar-thumb-white/50 
-            scrollbar-track-white/0
-            scrollbar-medium
-        '>
-         <Library />
-        </Box>
-      </div>
-      <main className='h-full flex-1 py-2'>
-        {children}
-      </main>
+            flex
+            flex-col
+            gap-y-4
+            px-6
+            py-4
+          '
+        >
+          {routes.map((item) => (
+            <SidebarItem 
+              key={item.label}
+              {...item}
+            />
+          ))}
+        </div>
+      </Box>
+      <Box 
+        className='
+          h-full 
+          overflow-hidden
+          hover:overflow-y-auto 
+          scrollbar
+        scrollbar-thumb-white/30
+        hover:scrollbar-thumb-white/50 
+          scrollbar-track-white/0
+          scrollbar-medium
+      '>
+        <Library />
+      </Box>
     </div>
   );
 };

@@ -15,7 +15,7 @@ const Content: React.FC<ContentProps> = ({
   return (
     <div className="flex flex-col mb-10">
       <div className='flex justify-between items-end'>
-        <h1 className='text-white text-2xl font-semibold'>
+        <h1 className='text-white text-2xl font-bold'>
           {children}
         </h1>
         <Link href="/">
